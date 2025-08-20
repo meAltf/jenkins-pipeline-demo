@@ -11,7 +11,7 @@ pipeline {
         stage('Read and Print File') {
             steps {
                 script {
-                    def content = readFile('text.txt')
+                    def content = readFile('test.txt')
                     echo "✅ Content of text.txt:"
                     echo content
                 }
