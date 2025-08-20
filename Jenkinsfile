@@ -1,9 +1,26 @@
 pipeline {
     agent any
+
     stages {
-        stage('Print Message') {
+        stage('Checkout') {
             steps {
-                echo "🎉 Hey Alataf, You created this using GitHub + Jenkins pipeline!"
+                checkout scm
+            }
+        }
+
+        stage('Read and Print File') {
+            steps {
+                script {
+                    def content = readFile('text.txt')
+                    echo "✅ Content of text.txt:"
+                    echo content
+                }
+            }
+        }
+
+        stage('Custom Message') {
+            steps {
+                echo "🎉 Hey Alataf, you nailed it! Both files worked in one build."
             }
         }
     }
